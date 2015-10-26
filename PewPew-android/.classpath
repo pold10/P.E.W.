@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="src" path="/PewPew-core"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.5.6/3031ab23b99fca1c102ad9fa866aeb06f938b8e2/gdx-backend-android-1.5.6.jar" sourcepath="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.5.6/c251caa01b5456a0772b6cf078a4005b2ae72eed/gdx-backend-android-1.5.6-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.5.6/7587cece665b8bbcc8e02171a77cb47a2bf0b155/gdx-box2d-1.5.6.jar" sourcepath="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.5.6/e667552ec80dd2ef72ec51c811694129e870f005/gdx-box2d-1.5.6-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.5.6/93418008f79684e0fbe15d487c82c21b63389f18/gdx-1.5.6.jar" sourcepath="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.5.6/478a70a74278275ea7a73ae1bf4519c5162ff388/gdx-1.5.6-sources.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
