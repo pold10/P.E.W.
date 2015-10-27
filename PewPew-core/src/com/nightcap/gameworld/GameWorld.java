@@ -6,7 +6,7 @@ public class GameWorld {
 	private Player player;
 
 	public GameWorld(int xSize, int ySize) {
-		player = new Player(ySize - 50, (int) xSize / 2, 40, 40);
+		player = new Player((int) (xSize-32) / 2, ySize - 37, 32, 32);
 	}
 
 	public void update(float delta) {

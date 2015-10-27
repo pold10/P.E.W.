@@ -38,7 +38,24 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
+		switch (keycode) {
+		case Keys.UP:
+			Gdx.app.log("Input Handler", "UP");
+			player.down();
+			break;
+		case Keys.DOWN:
+			Gdx.app.log("Input Handler", "DOWN");
+			player.up();
+			break;
+		case Keys.LEFT:
+			Gdx.app.log("Input Handler", "LEFT");
+			player.right();
+			break;
+		case Keys.RIGHT:
+			Gdx.app.log("Input Handler", "RIGHT");
+			player.left();
+			break;
+		}
 		return false;
 	}
 

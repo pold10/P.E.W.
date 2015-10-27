@@ -51,6 +51,11 @@ public class GameRenderer {
 		batcher.disableBlending();
 		batcher.draw(AssetLoader.bg, 0, 0, 640, 960);
 
+		batcher.enableBlending();
+
+		batcher.draw(AssetLoader.player, player.getX(), player.getY(),
+				player.getWidth(), player.getHeight());
+
 		// End SpriteBatch
 		batcher.end();
 	}
