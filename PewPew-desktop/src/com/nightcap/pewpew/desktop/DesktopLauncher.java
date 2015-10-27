@@ -7,7 +7,7 @@ import com.nightcap.pewpew.PewPewGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = "Zombie Bird";
+        config.title = "Planetary Extermination War";
         config.width = 640;
         config.height = 960;
 		new LwjglApplication(new PewPewGame(), config);
