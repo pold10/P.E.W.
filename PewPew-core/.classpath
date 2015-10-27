@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="libs/gdx-1.5.6.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-box2d-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-box2d-1.5.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

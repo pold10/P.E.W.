@@ -28,7 +28,6 @@ public class GameRenderer {
 
 	public void render(float runTime) {
 		Player player = myWorld.getPlayer();
-		Gdx.app.log("Renderer", player.getX() + "," + player.getY());
 
 		// Fill the entire screen with black, to prevent potential flickering.
 		Gdx.gl.glClearColor(0, 0, 0, 1);
