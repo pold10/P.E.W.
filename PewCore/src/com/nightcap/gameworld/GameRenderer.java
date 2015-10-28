@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.nightcap.gameobjects.Enemy;
 import com.nightcap.gameobjects.Player;
-import com.nightcap.pewhelpers.AssetLoader;
+import com.nightcap.pewhelpers.Assets;
 
 public class GameRenderer {
 	private GameWorld myWorld;
@@ -55,15 +55,15 @@ public class GameRenderer {
 		// This is good for performance when drawing images that do not require
 		// transparency.
 		batcher.disableBlending();
-		batcher.draw(AssetLoader.bg, 0, 0, 640, 960);
+		batcher.draw(Assets.bg, 0, 0, 640, 960);
 
 		batcher.enableBlending();
 
-		batcher.draw(AssetLoader.player, player.getX(), player.getY(),
+		batcher.draw(Assets.player, player.getX(), player.getY(),
 				player.getWidth(), player.getHeight());
 
 		for (int i = 0; i < player.getProjectiles().size(); i++) {
-			batcher.draw(AssetLoader.projectile, player.getProjectiles().get(i)
+			batcher.draw(Assets.projectile, player.getProjectiles().get(i)
 					.getX(), player.getProjectiles().get(i).getY(), 2, 3);
 		}
 
