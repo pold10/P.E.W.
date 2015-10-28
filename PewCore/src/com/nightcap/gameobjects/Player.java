@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.nightcap.pewhelpers.AssetLoader;
+import com.nightcap.pewhelpers.Assets;
 
 public class Player {
 	private Vector2 position;
@@ -73,7 +73,7 @@ public class Player {
 
 	public void shoot() {
 		float velX = velocity.x, velY = velocity.y;
-		AssetLoader.shoot.play();
+		Assets.shoot.play();
 
 		if (position.x <= 0 || position.x + width >= 640)
 			velX = 0;
