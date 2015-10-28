@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="src" path="/PewCore"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-lwjgl-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-box2d-platform-1.5.6-natives-desktop.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-platform-1.5.6-natives-desktop.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jinput-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jinput-platform-2.0.5-natives-linux.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jinput-platform-2.0.5-natives-osx.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jinput-platform-2.0.5-natives-windows.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jlayer-1.0.1-gdx.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jorbis-0.0.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jutils-1.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/lwjgl_util-2.9.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/lwjgl-2.9.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/lwjgl-platform-2.9.2-natives-linux.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/lwjgl-platform-2.9.2-natives-osx.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/lwjgl-platform-2.9.2-natives-windows.jar"/>
+	<classpathentry kind="src" path="assets"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
