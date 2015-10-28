@@ -1,12 +1,13 @@
 package com.nightcap.gameobjects;
 
+import com.badlogic.gdx.math.Vector2;
+
 public class SmallEnemy implements Enemy {
-	int xPos, yPos;
-	boolean Alive = true;
+	private Vector2 position;
+	private boolean Alive = true;
 
 	public SmallEnemy(int x, int y) {
-		xPos = x;
-		yPos = y;
+		position = new Vector2(x, y);
 	}
 
 	@Override
@@ -28,23 +29,23 @@ public class SmallEnemy implements Enemy {
 	}
 
 	@Override
-	public int getX() {
-		return xPos;
+	public float getX() {
+		return position.x;
 	}
 
 	@Override
-	public int getY() {
-		return yPos;
+	public float getY() {
+		return position.y;
 	}
 
 	@Override
 	public void setX(int x) {
-		xPos = x;
+		position.x = x;
 	}
 
 	@Override
 	public void setY(int y) {
-		yPos = y;
+		position.y = y;
 	}
 
 }

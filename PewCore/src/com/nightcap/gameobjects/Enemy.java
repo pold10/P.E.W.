@@ -8,9 +8,9 @@ public interface Enemy {
 	
 	void update(float delta);
 	
-	int getX();
+	float getX();
 	
-	int getY();
+	float getY();
 	
 	void setX(int x);
 	
