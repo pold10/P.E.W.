@@ -132,8 +132,8 @@ public class FosLoader { // awesome name. Should it be an interface?
 			return Gdx.files.internal("/");
 		} else {
 			return Gdx.files.internal("./assets/"); // THIS. IS. FUCKING
-														// REDIRECTING TO
-														// DESKTOP. WHAT DO?
+													// REDIRECTING TO
+													// DESKTOP. WHAT DO?
 		}
 	}
 }

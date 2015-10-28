@@ -58,8 +58,9 @@ public class Player {
 		// } else if (velocity.y < -300) {
 		// velocity.y = -300;
 		// }
-		
-		// Checks whether the projectile is inside the screen or not, if not, it deletes it.
+
+		// Checks whether the projectile is inside the screen or not, if not, it
+		// deletes it.
 		for (int i = 0; i < projectiles.size(); i++) {
 			PlayerProjectile p = (PlayerProjectile) projectiles.get(i);
 			if (p.isVisible())
@@ -70,14 +71,16 @@ public class Player {
 
 	}
 
-	public ArrayList<PlayerProjectile> getProjectiles() {
-		return projectiles;
-	}
-
 	public void shoot() {
+		float velX = velocity.x, velY = velocity.y;
 		Assets.shoot.play();
+
+		if (position.x <= 0 || position.x + width >= 640)
+			velX = 0;
+		if (position.y + height >= 960)
+			velY = 0;
 		projectiles.add(new PlayerProjectile(position.x + width / 2,
-				position.y, velocity.x, velocity.y));
+				position.y, velX, velY));
 	}
 
 	// Movement actions
@@ -102,6 +105,11 @@ public class Player {
 	}
 
 	// Getters
+
+	public ArrayList<PlayerProjectile> getProjectiles() {
+		return projectiles;
+	}
+
 	public float getX() {
 		return position.x;
 	}
