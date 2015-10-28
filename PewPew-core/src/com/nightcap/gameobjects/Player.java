@@ -1,7 +1,10 @@
 package com.nightcap.gameobjects;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.nightcap.pewhelpers.AssetLoader;
 
 public class Player {
 	private Vector2 position;
@@ -10,6 +13,9 @@ public class Player {
 
 	private int width;
 	private int height;
+
+	// Projectiles
+	private ArrayList<PlayerProjectile> projectiles = new ArrayList<PlayerProjectile>();
 
 	public static float velocityLimit = 300; // Movement velocity
 
@@ -52,7 +58,26 @@ public class Player {
 		// } else if (velocity.y < -300) {
 		// velocity.y = -300;
 		// }
+		
+		// Checks whether the projectile is inside the screen or not, if not, it deletes it.
+		for (int i = 0; i < projectiles.size(); i++) {
+			PlayerProjectile p = (PlayerProjectile) projectiles.get(i);
+			if (p.isVisible())
+				p.update(delta);
+			else
+				projectiles.remove(i);
+		}
 
+	}
+
+	public ArrayList<PlayerProjectile> getProjectiles() {
+		return projectiles;
+	}
+
+	public void shoot() {
+		AssetLoader.shoot.play();
+		projectiles.add(new PlayerProjectile(position.x + width / 2,
+				position.y, velocity.x, velocity.y));
 	}
 
 	// Movement actions

@@ -32,6 +32,9 @@ public class InputHandler implements InputProcessor {
 			Gdx.app.log("Input Handler", "RIGHT");
 			player.right();
 			break;
+		case Keys.SPACE:
+			Gdx.app.log("Input Handler", "PEW!");
+			player.shoot();
 		}
 		return false;
 	}
