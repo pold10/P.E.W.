@@ -1,5 +1,6 @@
 package com.nightcap.pewhelpers;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -8,6 +9,8 @@ public class Assets {
 	public static TextureRegion bg, player, projectile, smallEnemy;
 
 	public static Sound shoot, mediumExplosion;
+	
+	public static Music music;
 
 	public static void load() {
 		
@@ -26,6 +29,11 @@ public class Assets {
 		// Audio
 		shoot = FosLoader.getSound("small_plasma_fire");
 		mediumExplosion = FosLoader.getSound("medium_generic_explosion");
+		//Music
+		music = FosLoader.getMusic("calm_space_loop");
+		music.play();
+		music.setLooping(true);
+		
 	}
 
 	public static void dispose() {
