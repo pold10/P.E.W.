@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.nightcap.gameobjects.Enemy;
@@ -18,6 +19,8 @@ public class GameRenderer {
 	private OrthographicCamera cam;
 	private SpriteBatch batcher;
 	private ShapeRenderer shapeRenderer;
+	float stateTime = 0f;
+	TextureRegion currentFrame;
 
 	public GameRenderer(GameWorld world, int width, int height) {
 		myWorld = world;
@@ -37,6 +40,8 @@ public class GameRenderer {
 		// Fill the entire screen with black, to prevent potential flickering.
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		stateTime += Gdx.graphics.getDeltaTime();
+		currentFrame = Assets.player.getKeyFrame(stateTime, true);
 
 		// Begin ShapeRenderer
 		shapeRenderer.begin(ShapeType.Filled);
@@ -57,8 +62,10 @@ public class GameRenderer {
 		batcher.draw(Assets.bg, 0, 0, 640, 960);
 
 		batcher.enableBlending();
+		
+		
 
-		batcher.draw(Assets.player, player.getX(), player.getY(),
+		batcher.draw(currentFrame, player.getX(), player.getY(),
 				player.getWidth(), player.getHeight());
 
 		// Draw bullets
