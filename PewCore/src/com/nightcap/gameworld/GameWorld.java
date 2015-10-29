@@ -2,7 +2,6 @@ package com.nightcap.gameworld;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Gdx;
 import com.nightcap.gameobjects.Enemy;
 import com.nightcap.gameobjects.Player;
 import com.nightcap.gameobjects.SmallEnemy;
