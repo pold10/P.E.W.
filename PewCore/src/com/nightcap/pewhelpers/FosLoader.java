@@ -1,8 +1,6 @@
 package com.nightcap.pewhelpers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
