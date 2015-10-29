@@ -1,13 +1,19 @@
 package com.nightcap.gameobjects;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class SmallEnemy implements Enemy {
 	private Vector2 position;
+	private int width = 24, height = 24;
 	private boolean Alive = true;
+
+	// Shapes for collisions
+	private Rectangle collisionArea;
 
 	public SmallEnemy(int x, int y) {
 		position = new Vector2(x, y);
+		collisionArea = new Rectangle();
 	}
 
 	@Override
@@ -24,8 +30,25 @@ public class SmallEnemy implements Enemy {
 
 	@Override
 	public void update(float delta) {
-		// TODO Auto-generated method stub
+		collisionArea.set(position.x, position.y, width, height);
+	}
 
+	// Getters
+	public Vector2 getPosition() {
+		return position;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public boolean isAlive() {
+		return Alive;
+	}
+
+	@Override
+	public Rectangle getCollisionArea() {
+		return collisionArea;
 	}
 
 	@Override
@@ -37,7 +60,8 @@ public class SmallEnemy implements Enemy {
 	public float getY() {
 		return position.y;
 	}
-
+	
+	// Setters
 	@Override
 	public void setX(int x) {
 		position.x = x;
@@ -46,6 +70,14 @@ public class SmallEnemy implements Enemy {
 	@Override
 	public void setY(int y) {
 		position.y = y;
+	}
+
+	public void setAlive(boolean alive) {
+		Alive = alive;
+	}
+
+	public void setCollisionArea(Rectangle collisionArea) {
+		this.collisionArea = collisionArea;
 	}
 
 }

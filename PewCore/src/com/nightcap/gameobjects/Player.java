@@ -2,7 +2,6 @@ package com.nightcap.gameobjects;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.nightcap.pewhelpers.Assets;
 
@@ -13,6 +12,9 @@ public class Player {
 
 	private int width;
 	private int height;
+
+	private static final double shootCD = 0.2;
+	private double shootTimer = 0;
 
 	// Projectiles
 	private ArrayList<PlayerProjectile> projectiles = new ArrayList<PlayerProjectile>();
@@ -28,6 +30,8 @@ public class Player {
 	}
 
 	public void update(float delta) {
+		shootTimer += delta;
+
 		position.add(velocity.cpy().scl(delta));
 
 		// Position boundaries
@@ -72,35 +76,35 @@ public class Player {
 	}
 
 	public void shoot() {
-		float velX = velocity.x, velY = velocity.y;
-		Assets.shoot.play();
+		if (shootTimer > shootCD) {
+			float velX = velocity.x, velY = velocity.y;
+			Assets.shoot.play();
 
-		if (position.x <= 0 || position.x + width >= 640)
-			velX = 0;
-		if (position.y + height >= 960)
-			velY = 0;
-		projectiles.add(new PlayerProjectile(position.x + width / 2,
-				position.y, velX, velY));
+			// Limit cases
+			if (position.x <= 0 || position.x + width >= 640)
+				velX = 0;
+			if (position.y + height >= 960)
+				velY = 0;
+			projectiles.add(new PlayerProjectile(position.x + width / 2,
+					position.y, velX, velY));
+			shootTimer = 0;
+		}
 	}
 
 	// Movement actions
 	public void up() {
-		Gdx.app.log("Player", "UP");
 		velocity.y += -velocityLimit;
 	}
 
 	public void down() {
-		Gdx.app.log("Player", "DOWN");
 		velocity.y += velocityLimit;
 	}
 
 	public void right() {
-		Gdx.app.log("Player", "RIGHT");
 		velocity.x += velocityLimit;
 	}
 
 	public void left() {
-		Gdx.app.log("Player", "LEFT");
 		velocity.x += -velocityLimit;
 	}
 

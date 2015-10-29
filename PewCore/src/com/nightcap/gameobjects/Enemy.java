@@ -1,5 +1,7 @@
 package com.nightcap.gameobjects;
 
+import com.badlogic.gdx.math.Rectangle;
+
 public interface Enemy {
 
 	void shoot(int posX, int posY, int dX, int dY);
@@ -11,6 +13,8 @@ public interface Enemy {
 	float getX();
 	
 	float getY();
+	
+	Rectangle getCollisionArea();
 	
 	void setX(int x);
 	

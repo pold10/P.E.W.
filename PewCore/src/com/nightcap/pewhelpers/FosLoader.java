@@ -1,6 +1,7 @@
 package com.nightcap.pewhelpers;
 
 import java.util.ArrayList;
+
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -82,6 +83,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 			TextureRegion[][] splitTexture = TextureRegion.split(texture,
 					texture.getWidth() / keyFrames, texture.getHeight());
 			TextureRegion[] unidim = new TextureRegion[keyFrames];
+			
 			for (int i = 0; i < keyFrames; i++) {
 				unidim[i] = splitTexture[i][0];
 			}
@@ -136,20 +138,20 @@ public class FosLoader { // awesome name. Should it be an interface?
 									+ " loaded to memory as "
 									+ rawTexturesIndexArray
 											.get(rawTexturesIndexArray.size() - 1));
-				}else{
+				} else {
 
-				TextureRegion textureRegion = new TextureRegion(texture, 0, 0,
-						texture.getWidth(), texture.getHeight());
-				textureRegion.flip(false, true);
-				texturesArray.add(textureRegion);
-				texturesIndexArray.add(file.nameWithoutExtension());
-				Gdx.app.log(
-						"Load",
-						"Texture "
-								+ file.name()
-								+ " loaded to memory as "
-								+ texturesIndexArray.get(texturesIndexArray
-										.size() - 1));
+					TextureRegion textureRegion = new TextureRegion(texture, 0,
+							0, texture.getWidth(), texture.getHeight());
+					textureRegion.flip(false, true);
+					texturesArray.add(textureRegion);
+					texturesIndexArray.add(file.nameWithoutExtension());
+					Gdx.app.log(
+							"Load",
+							"Texture "
+									+ file.name()
+									+ " loaded to memory as "
+									+ texturesIndexArray.get(texturesIndexArray
+											.size() - 1));
 				}
 
 				// Haiku programming

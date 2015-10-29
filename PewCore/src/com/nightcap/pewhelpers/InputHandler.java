@@ -17,23 +17,18 @@ public class InputHandler implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		switch (keycode) {
 		case Keys.UP:
-			Gdx.app.log("Input Handler", "UP");
 			player.up();
 			break;
 		case Keys.DOWN:
-			Gdx.app.log("Input Handler", "DOWN");
 			player.down();
 			break;
 		case Keys.LEFT:
-			Gdx.app.log("Input Handler", "LEFT");
 			player.left();
 			break;
 		case Keys.RIGHT:
-			Gdx.app.log("Input Handler", "RIGHT");
 			player.right();
 			break;
 		case Keys.SPACE:
-			Gdx.app.log("Input Handler", "PEW!");
 			player.shoot();
 		}
 		return false;
@@ -43,19 +38,15 @@ public class InputHandler implements InputProcessor {
 	public boolean keyUp(int keycode) {
 		switch (keycode) {
 		case Keys.UP:
-			Gdx.app.log("Input Handler", "UP");
 			player.down();
 			break;
 		case Keys.DOWN:
-			Gdx.app.log("Input Handler", "DOWN");
 			player.up();
 			break;
 		case Keys.LEFT:
-			Gdx.app.log("Input Handler", "LEFT");
 			player.right();
 			break;
 		case Keys.RIGHT:
-			Gdx.app.log("Input Handler", "RIGHT");
 			player.left();
 			break;
 		}
