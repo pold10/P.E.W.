@@ -2,14 +2,14 @@ package com.nightcap.pewpew;
 
 import com.badlogic.gdx.Game;
 import com.nightcap.pewhelpers.Assets;
-import com.nightcap.screens.GameScreen;
+import com.nightcap.userinterface.MainMenu;
 
-public class PewPewGame extends Game {
+public class PEWGame extends Game {
 
 	@Override
 	public void create() {
 		Assets.load();
-		setScreen(new GameScreen());
+		setScreen(new MainMenu(this));
 	}
 
 	@Override

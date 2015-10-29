@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 public class SmallEnemy implements Enemy {
 	private Vector2 position;
 	private int width = 24, height = 24;
-	private boolean Alive = true;
+	private boolean alive = true;
 
 	// Shapes for collisions
 	private Rectangle collisionArea;
@@ -24,8 +24,7 @@ public class SmallEnemy implements Enemy {
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub
-
+		alive = false;
 	}
 
 	@Override
@@ -42,13 +41,14 @@ public class SmallEnemy implements Enemy {
 		return height;
 	}
 
-	public boolean isAlive() {
-		return Alive;
-	}
-
 	@Override
 	public Rectangle getCollisionArea() {
 		return collisionArea;
+	}
+
+	@Override
+	public boolean isAlive() {
+		return alive;
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class SmallEnemy implements Enemy {
 	public float getY() {
 		return position.y;
 	}
-	
+
 	// Setters
 	@Override
 	public void setX(int x) {
@@ -70,10 +70,6 @@ public class SmallEnemy implements Enemy {
 	@Override
 	public void setY(int y) {
 		position.y = y;
-	}
-
-	public void setAlive(boolean alive) {
-		Alive = alive;
 	}
 
 	public void setCollisionArea(Rectangle collisionArea) {

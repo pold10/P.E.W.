@@ -23,6 +23,8 @@ public class GameWorld {
 
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).update(delta);
+			if (!enemies.get(i).isAlive())
+				enemies.remove(i);
 		}
 
 		// Enemies x Projectiles collisions
@@ -38,6 +40,7 @@ public class GameWorld {
 					// Gdx.app.log("GameWorld", "Collision!");
 					Assets.mediumExplosion.play();
 					player.getProjectiles().get(j).setVisible(false);
+					enemies.get(i).die();
 				}
 			}
 		}
