@@ -2,11 +2,14 @@ package com.nightcap.pewhelpers;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
 
-	public static TextureRegion bg, player, projectile, smallEnemy;
+	public static TextureRegion bg, projectile, smallEnemy;
+	
+	public static Animation player;
 
 	public static Sound shoot, mediumExplosion;
 	
@@ -21,7 +24,7 @@ public class Assets {
 		// Background
 		bg = FosLoader.getTexReg("background_0");
 		// Player
-		player = FosLoader.getTexReg("medium_player_0");
+		player = FosLoader.getAnimation(0.2f,"raw_medium_player_0");
 		// Player's projectiles
 		projectile = FosLoader.getTexReg("small_lead_normal");
 		// Enemies

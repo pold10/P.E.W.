@@ -85,7 +85,8 @@ public class FosLoader { // awesome name. Should it be an interface?
 			TextureRegion[] unidim = new TextureRegion[keyFrames];
 			
 			for (int i = 0; i < keyFrames; i++) {
-				unidim[i] = splitTexture[i][0];
+				unidim[i] = splitTexture[0][i];
+				unidim[i].flip(false, true);
 			}
 			Animation animation = new Animation(timeInterval, unidim);
 			return animation;
