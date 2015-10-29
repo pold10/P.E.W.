@@ -2,9 +2,11 @@ package com.nightcap.gameworld;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.nightcap.gameobjects.Enemy;
 import com.nightcap.gameobjects.Player;
 import com.nightcap.gameobjects.SmallEnemy;
+import com.nightcap.pewhelpers.Assets;
 
 public class GameWorld {
 	private Player player;
@@ -20,10 +22,26 @@ public class GameWorld {
 	public void update(float delta) {
 		player.update(delta);
 
-		 for (int i = 0; i < enemies.size(); i++) {
-		 enemies.get(i).update(delta);
-		 }
+		for (int i = 0; i < enemies.size(); i++) {
+			enemies.get(i).update(delta);
+		}
 
+		// Enemies x Projectiles collisions
+		for (int i = 0; i < enemies.size(); i++) {
+			for (int j = 0; j < player.getProjectiles().size(); j++) {
+				// If both rectangles collide, it's a collision.
+				if (enemies
+						.get(i)
+						.getCollisionArea()
+						.overlaps(
+								player.getProjectiles().get(j)
+										.getCollisionArea())) {
+					// Gdx.app.log("GameWorld", "Collision!");
+					Assets.mediumExplosion.play();
+					player.getProjectiles().get(j).setVisible(false);
+				}
+			}
+		}
 	}
 
 	public Player getPlayer() {

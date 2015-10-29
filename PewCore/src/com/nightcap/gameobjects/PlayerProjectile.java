@@ -1,8 +1,12 @@
 package com.nightcap.gameobjects;
 
+import com.badlogic.gdx.math.Rectangle;
+
 public class PlayerProjectile {
 	private float x, y, dx, dy;
 	private boolean visible = true;
+
+	private Rectangle collisionArea;
 
 	public PlayerProjectile(float startX, float startY, float playerDx,
 			float playerDy) {
@@ -10,6 +14,8 @@ public class PlayerProjectile {
 		y = startY;
 		dx = playerDx / 3;
 		dy = -400 + playerDy / 3;
+
+		collisionArea = new Rectangle();
 	}
 
 	public void update(float delta) {
@@ -21,6 +27,8 @@ public class PlayerProjectile {
 		} else if (y < 0) {
 			visible = false;
 		}
+
+		collisionArea.set(x, y, 2, 3);
 	}
 
 	// Getters
@@ -42,6 +50,10 @@ public class PlayerProjectile {
 
 	public boolean isVisible() {
 		return visible;
+	}
+
+	public Rectangle getCollisionArea() {
+		return collisionArea;
 	}
 
 	// Setters
