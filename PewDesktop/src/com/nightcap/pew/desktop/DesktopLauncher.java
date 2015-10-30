@@ -1,8 +1,8 @@
-package com.nightcap.pewpew.desktop;
+package com.nightcap.pew.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.nightcap.pewpew.PewPewGame;
+import com.nightcap.pewpew.PEWGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -10,6 +10,6 @@ public class DesktopLauncher {
         config.title = "Planetary Extermination War";
         config.width = 640;
         config.height = 960;
-		new LwjglApplication(new PewPewGame(), config);
+		new LwjglApplication(new PEWGame(), config);
 	}
 }

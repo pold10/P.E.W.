@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
 
-	public static TextureRegion bg, projectile, smallEnemy;
+	public static TextureRegion background0, smallLeadNormal, smallRat0;
 	
-	public static Animation player;
+	public static Animation player, smallImpactLead;
 
 	public static Sound shoot, mediumExplosion;
 	
@@ -22,13 +22,15 @@ public class Assets {
 		FosLoader.load(FosLoader.fileArray);
 		
 		// Background
-		bg = FosLoader.getTexReg("background_0");
+		background0 = FosLoader.getTexReg("background_0");
 		// Player
 		player = FosLoader.getAnimation(0.2f,"raw_medium_player_0");
 		// Player's projectiles
-		projectile = FosLoader.getTexReg("small_lead_normal");
+		smallLeadNormal = FosLoader.getTexReg("small_lead_normal");
 		// Enemies
-		smallEnemy = FosLoader.getTexReg("small_rat_0");
+		smallRat0 = FosLoader.getTexReg("small_rat_0");
+		// Enemy explosions
+		smallImpactLead = FosLoader.getAnimation(0.2f, "raw_small_impact_lead");
 		// Audio
 		shoot = FosLoader.getSound("small_plasma_fire");
 		mediumExplosion = FosLoader.getSound("medium_generic_explosion");
