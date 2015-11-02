@@ -3,7 +3,7 @@ package com.mygdx.pewpew.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.nightcap.pewpew.PewPewGame;
+import com.nightcap.pewpew.PEWGame;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +14,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener getApplicationListener () {
-                return new PewPewGame();
+                return new PEWGame();
         }
 }

@@ -79,7 +79,7 @@ public class MainMenu implements Screen {
 		// Create a button with the "default" TextButtonStyle. A 3rd parameter
 		// can be used to specify a name other than "default".
 		final TextButton textButton = new TextButton("PLAY", textButtonStyle);
-		textButton.setPosition(200, 200);
+		textButton.setPosition(200, 600);
 		stage.addActor(textButton);
 		// For some reason the guide uses this command three times.
 		// stage.addActor(textButton);
