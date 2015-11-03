@@ -83,7 +83,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 			TextureRegion[][] splitTexture = TextureRegion.split(texture,
 					texture.getWidth() / keyFrames, texture.getHeight());
 			TextureRegion[] unidim = new TextureRegion[keyFrames];
-			
+
 			for (int i = 0; i < keyFrames; i++) {
 				unidim[i] = splitTexture[0][i];
 				unidim[i].flip(false, true);
@@ -123,8 +123,12 @@ public class FosLoader { // awesome name. Should it be an interface?
 		// his own array
 		for (FileHandle file : allFiles) {
 
-			if (file.extension().equals("png")) { // dis sum low level
-													// programmin'
+			// Pold's note: Make this loader not load the "skins" folder, so
+			// these weird exclusions "!" can be deleted
+			if (file.extension().equals("png")
+					&& !file.name().equals("default.png")
+					&& !file.name().equals("uiskin.png")) { // dis sum low level
+				// programmin'
 				Texture texture = new Texture(file);
 				texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 

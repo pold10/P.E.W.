@@ -18,7 +18,7 @@
 		<link>
 			<name>assets</name>
 			<type>2</type>
-			<locationURI>PARENT-1-PROJECT_LOC/PewCore/assets</locationURI>
+			<locationURI>PROJECT_LOC/assets</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
