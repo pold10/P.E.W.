@@ -212,7 +212,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 			} else {
 
 				Gdx.app.log("Seek", file.name()
-						+ " is a file. Added to loading array.");
+						+ " is a file. Queued to loader.");
 				allFiles.add(file);
 
 			}
@@ -234,5 +234,13 @@ public class FosLoader { // awesome name. Should it be an interface?
 	public static void disposeAll() {
 		// dispose ALL
 		fileArray.clear();
+		musicArray.clear();
+		musicIndexArray.clear();
+		rawTexturesArray.clear();
+		rawTexturesIndexArray.clear();
+		soundsArray.clear();
+		soundsIndexArray.clear();
+		texturesArray.clear();
+		texturesIndexArray.clear();		
 	}
 }
