@@ -3,7 +3,7 @@ package com.nightcap.gameobjects;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
-import com.nightcap.pewhelpers.Assets;
+import com.nightcap.pewhelpers.AudioHandler;
 
 public class Player {
 	private Vector2 position;
@@ -78,7 +78,7 @@ public class Player {
 	public void shoot() {
 		if (shootTimer > shootCD) {
 			float velX = velocity.x, velY = velocity.y;
-			Assets.shoot.play();
+			AudioHandler.shoot.play();
 
 			// Limit cases
 			if (position.x <= 0 || position.x + width >= 640)

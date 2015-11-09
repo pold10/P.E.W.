@@ -51,7 +51,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 		int index = rawTexturesIndexArray.indexOf(fileName);
 
 		if (index >= 0) {
-			Gdx.app.log("Log", fileName + " found!");
+//			Gdx.app.log("Log", fileName + " found!");
 			return rawTexturesArray.get(index);
 		} else {
 			Gdx.app.log("Error", "Raw texture " + fileName + " not found.");
@@ -64,7 +64,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 		// we don't want to cause multiple searches
 
 		if (index >= 0) {
-			Gdx.app.log("Log", fileName + " found!");
+//			Gdx.app.log("Log", fileName + " found!");
 			return texturesArray.get(index);
 
 		} else {
@@ -77,7 +77,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 	public static Animation getAnimation(float timeInterval, String fileName) {
 		int index = rawTexturesIndexArray.indexOf(fileName);
 		if (index >= 0) {
-			Gdx.app.log("Log", fileName + " found!");
+			// Gdx.app.log("Log", fileName + " found!");
 			Texture texture = rawTexturesArray.get(index);
 			int keyFrames = texture.getWidth() / texture.getHeight();
 			TextureRegion[][] splitTexture = TextureRegion.split(texture,
@@ -100,7 +100,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 	public static Sound getSound(String fileName) {
 		int index = soundsIndexArray.indexOf(fileName);
 		if (index >= 0) {
-			Gdx.app.log("Log", fileName + " found!");
+//			Gdx.app.log("Log", fileName + " found!");
 			return soundsArray.get(index);
 		} else {
 			Gdx.app.log("Error", "Sound " + fileName + " not found.");
@@ -111,7 +111,7 @@ public class FosLoader { // awesome name. Should it be an interface?
 	public static Music getMusic(String fileName) {
 		int index = musicIndexArray.indexOf(fileName);
 		if (index >= 0) {
-			Gdx.app.log("Log", fileName + " found!");
+//			Gdx.app.log("Log", fileName + " found!");
 			return musicArray.get(index);
 		} else {
 			Gdx.app.log("Error", "Song " + fileName + " not found.");
@@ -136,13 +136,13 @@ public class FosLoader { // awesome name. Should it be an interface?
 				if (file.name().toLowerCase().startsWith("raw")) {
 					rawTexturesArray.add(texture);
 					rawTexturesIndexArray.add(file.nameWithoutExtension());
-					Gdx.app.log(
-							"Load",
-							"Raw Texture "
-									+ file.name()
-									+ " loaded to memory as "
-									+ rawTexturesIndexArray
-											.get(rawTexturesIndexArray.size() - 1));
+//					Gdx.app.log(
+//							"Load",
+//							"Raw Texture "
+//									+ file.name()
+//									+ " loaded to memory as "
+//									+ rawTexturesIndexArray
+//											.get(rawTexturesIndexArray.size() - 1));
 				} else {
 
 					TextureRegion textureRegion = new TextureRegion(texture, 0,
@@ -150,13 +150,13 @@ public class FosLoader { // awesome name. Should it be an interface?
 					textureRegion.flip(false, true);
 					texturesArray.add(textureRegion);
 					texturesIndexArray.add(file.nameWithoutExtension());
-					Gdx.app.log(
-							"Load",
-							"Texture "
-									+ file.name()
-									+ " loaded to memory as "
-									+ texturesIndexArray.get(texturesIndexArray
-											.size() - 1));
+//					Gdx.app.log(
+//							"Load",
+//							"Texture "
+//									+ file.name()
+//									+ " loaded to memory as "
+//									+ texturesIndexArray.get(texturesIndexArray
+//											.size() - 1));
 				}
 
 				// Haiku programming
@@ -167,12 +167,12 @@ public class FosLoader { // awesome name. Should it be an interface?
 
 				soundsArray.add(sound);
 				soundsIndexArray.add(file.nameWithoutExtension());
-				Gdx.app.log(
-						"Load",
-						"Sound "
-								+ file.name()
-								+ " loaded to memory as"
-								+ soundsIndexArray.get(soundsIndexArray.size() - 1));
+//				Gdx.app.log(
+//						"Load",
+//						"Sound "
+//								+ file.name()
+//								+ " loaded to memory as"
+//								+ soundsIndexArray.get(soundsIndexArray.size() - 1));
 
 			} else if (file.extension().equals("mp3")) {
 
@@ -180,12 +180,12 @@ public class FosLoader { // awesome name. Should it be an interface?
 
 				musicArray.add(music);
 				musicIndexArray.add(file.nameWithoutExtension());
-				Gdx.app.log(
-						"Load",
-						"Song "
-								+ file.name()
-								+ " loaded to memory as"
-								+ musicIndexArray.get(musicIndexArray.size() - 1));
+//				Gdx.app.log(
+//						"Load",
+//						"Song "
+//								+ file.name()
+//								+ " loaded to memory as"
+//								+ musicIndexArray.get(musicIndexArray.size() - 1));
 
 			} else {
 
@@ -205,14 +205,14 @@ public class FosLoader { // awesome name. Should it be an interface?
 
 			if (file.isDirectory()) {
 
-				Gdx.app.log("Seek", file.name() + " is a folder. Accessing "
-						+ file.name() + " folder.");
+//				Gdx.app.log("Seek", file.name() + " is a folder. Accessing "
+//						+ file.name() + " folder.");
 				getHandles(file, allFiles); // recursive to the rescue. TADAA!!!
 
 			} else {
 
-				Gdx.app.log("Seek", file.name()
-						+ " is a file. Queued to loader.");
+				// Gdx.app.log("Seek", file.name()
+				// + " is a file. Queued to loader.");
 				allFiles.add(file);
 
 			}

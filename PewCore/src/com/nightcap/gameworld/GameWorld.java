@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.nightcap.gameobjects.Enemy;
 import com.nightcap.gameobjects.Player;
 import com.nightcap.gameobjects.SmallEnemy;
-import com.nightcap.pewhelpers.Assets;
+import com.nightcap.pewhelpers.AudioHandler;
 
 public class GameWorld {
 	private Player player;
@@ -38,7 +38,7 @@ public class GameWorld {
 								player.getProjectiles().get(j)
 										.getCollisionArea())) {
 					// Gdx.app.log("GameWorld", "Collision!");
-					Assets.mediumExplosion.play();
+					AudioHandler.mediumExplosion.play();
 					player.getProjectiles().get(j).setVisible(false);
 					enemies.get(i).die();
 				}

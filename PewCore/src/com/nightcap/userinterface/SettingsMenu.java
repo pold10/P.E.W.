@@ -13,10 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider.SliderStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.nightcap.pewhelpers.PreferencesHandler;
 import com.nightcap.pewpew.PEWGame;
 
 public class SettingsMenu implements Screen {
@@ -29,6 +32,11 @@ public class SettingsMenu implements Screen {
 	private Table table;
 
 	final private float[] backgroundColor = new float[3];
+
+	// Actors
+	private Label menuTitle, audioCategory, videoCategory, volumeLabel;
+	private TextButton audioOn, backButton;
+	private Slider volumeSlider;
 
 	public SettingsMenu(PEWGame game) {
 		this.game = game;
@@ -53,7 +61,7 @@ public class SettingsMenu implements Screen {
 		pixmap = new Pixmap(125, 75, Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
-		skin.add("white", new Texture(pixmap));
+		skin.add("big", new Texture(pixmap));
 
 		// Store the font under the name "default".
 		// Note: Has to be moved to AssetLoader (FosLoader).
@@ -63,47 +71,103 @@ public class SettingsMenu implements Screen {
 		// Configure a TextButtonStyle and name it "default". Skin resources are
 		// stored by type, so this doesn't overwrite the font.
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
-		textButtonStyle.up = skin.newDrawable("white", Color.TEAL);
-		textButtonStyle.down = skin.newDrawable("white", Color.TEAL);
-		textButtonStyle.checked = skin.newDrawable("white", Color.NAVY);
-		textButtonStyle.over = skin.newDrawable("white", Color.CYAN);
+		textButtonStyle.up = skin.newDrawable("big", Color.TEAL);
+		textButtonStyle.down = skin.newDrawable("big", Color.TEAL);
+		textButtonStyle.checked = skin.newDrawable("big", Color.NAVY);
+		textButtonStyle.over = skin.newDrawable("big", Color.CYAN);
 
 		textButtonStyle.font = skin.getFont("default");
 
 		// Label Style for the skin
 		LabelStyle labelStyle = new LabelStyle();
-
 		labelStyle.font = skin.getFont("default");
+
+		// Slyder Style
+		pixmap = new Pixmap(150, 20, Format.RGBA8888);
+		pixmap.setColor(Color.PURPLE);
+		pixmap.fill();
+		skin.add("sliderB", new Texture(pixmap));
+		pixmap = new Pixmap(20, 20, Format.RGBA8888);
+		pixmap.setColor(Color.PURPLE);
+		pixmap.fill();
+		skin.add("sliderK", new Texture(pixmap));
+		SliderStyle sliderStyle = new SliderStyle(skin.newDrawable("sliderB",
+				Color.DARK_GRAY), skin.newDrawable("sliderK", Color.GRAY));
 
 		skin.add("default", textButtonStyle);
 		skin.add("default", labelStyle);
+		skin.add("default-horizontal", sliderStyle);
 
-		final Label menuTitle = new Label("Settings", skin);
-		menuTitle.setFontScale(2);
-		final Label audioCategory = new Label("Audio", skin);
-		final Label videoCategory = new Label("Video", skin);
-		final TextButton backButton = new TextButton("Back", skin);
+		// Actors
+		menuTitle = new Label("Settings", skin);
+		menuTitle.setFontScale(1.5f);
+		// audioCategory = new Label("Audio", skin);
+		// videoCategory = new Label("Video", skin);
+
+		audioOn = new TextButton("Audio: Off", skin);
+		volumeLabel = new Label("Volume: 0", skin);
+		volumeSlider = new Slider(0f, 100f, 1f, false, skin);
+
+		backButton = new TextButton("Back", skin);
+
+		// Load presets
+		loadPresets();
 
 		table = new Table();
 		table.setFillParent(true);
 		table.add(menuTitle).pad(50).colspan(2);
 
+		// table.row();
+		// table.add(audioCategory).pad(50);
+		// table.add(videoCategory).pad(50);
+
 		table.row();
-		table.add(audioCategory).pad(50);
-		table.add(videoCategory).pad(50);
+		table.add(audioOn);
+
+		table.row();
+		table.add(volumeLabel);
+		table.add(volumeSlider);
 
 		table.row();
 		table.add();
-		table.add(backButton).pad(50);
+		table.add(backButton).pad(50).right();
 
 		stage.addActor(table);
 
 		// Button Listeners
+		audioOn.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				if (audioOn.isChecked())
+					audioOn.setText("Audio: On");
+				else
+					audioOn.setText("Audio: Off");
+				PreferencesHandler.AudioToggle();
+			}
+		});
+
+		volumeSlider.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				int volume = (int) volumeSlider.getValue(); // Knob Value
+				volumeLabel.setText("Volume: " + volume);
+				PreferencesHandler.setVolume(volume);
+			}
+		});
+
 		backButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
+				game.getScreen().hide();
 				game.setScreen(new MainMenu(game));
 			}
 		});
+	}
+
+	private void loadPresets() {
+		if (PreferencesHandler.AudioOn()) {
+			audioOn.setChecked(true);
+			audioOn.setText("Audio: On");
+		}
+		volumeLabel.setText("Volume: " + (int) PreferencesHandler.getVolume());
+		volumeSlider.setValue(PreferencesHandler.getVolume());
 	}
 
 	@Override
