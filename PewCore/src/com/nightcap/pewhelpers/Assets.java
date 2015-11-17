@@ -5,7 +5,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
 
-	public static TextureRegion background0, smallLeadNormal, smallRat0;
+	public static TextureRegion background0, background1, background2,
+			overlay0, smallLeadNormal, smallRat0;
 
 	public static Animation player, smallImpactLead;
 
@@ -17,6 +18,9 @@ public class Assets {
 
 		// Background
 		background0 = FosLoader.getTexReg("background_0");
+		background1 = FosLoader.getTexReg("background_1");
+		background2 = FosLoader.getTexReg("background_2");
+		overlay0 = FosLoader.getTexReg("overlay_0");
 		// Player
 		player = FosLoader.getAnimation(0.2f, "raw_medium_player_0");
 		// Player's projectiles
@@ -28,6 +32,6 @@ public class Assets {
 	}
 
 	public static void dispose() {
-		// Is this needed? 
+		// Is this needed?
 	}
 }

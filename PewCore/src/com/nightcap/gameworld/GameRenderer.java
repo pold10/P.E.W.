@@ -1,7 +1,5 @@
 package com.nightcap.gameworld;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.nightcap.gameobjects.Enemy;
 import com.nightcap.gameobjects.Player;
 import com.nightcap.pewhelpers.Assets;
 
@@ -22,10 +19,9 @@ public class GameRenderer {
 	private TextureRegion currentFrame;
 
 	// Game Objects
-	// Note: I think we should not recreate these objects in the renderer class,
+	// Note: I think we should not recreate objects in the renderer classes,
 	// and only use the getters. Not sure what is appropriate.
 	private Player player;
-	private ArrayList<Enemy> enemies;
 
 	public GameRenderer(GameWorld world, int width, int height) {
 		myWorld = world;
@@ -66,6 +62,8 @@ public class GameRenderer {
 		// Transparency on
 		batcher.enableBlending();
 
+		stageRenderer.drawOverlay(batcher, runTime);
+		
 		batcher.draw(currentFrame, player.getX(), player.getY(),
 				player.getWidth(), player.getHeight());
 
@@ -78,7 +76,6 @@ public class GameRenderer {
 
 	public void initGameObjects() {
 		player = myWorld.getPlayer();
-		enemies = myWorld.getStage().getEnemies();
 	}
 
 	public void drawBullets() {

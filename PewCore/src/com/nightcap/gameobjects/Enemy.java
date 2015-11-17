@@ -8,12 +8,7 @@ public interface Enemy {
 
 	void die();
 
-	/*
-	 * Movement Patterns:
-	 * 0.- Stay
-	 * 1.- Horizontal
-	 */
-	void update(float delta, int i);
+	void update(float delta);
 
 	float getX();
 
