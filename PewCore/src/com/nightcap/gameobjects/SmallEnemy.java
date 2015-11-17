@@ -5,16 +5,17 @@ import com.badlogic.gdx.math.Vector2;
 
 public class SmallEnemy implements Enemy {
 	private Vector2 position;
-	private int width = 24, height = 24;
+	private int width = 24, height = 24, movementPattern;
 	private boolean alive = true;
-	private String direction = "right";
+	private String direction;
 
 	// Shapes for collisions
 	private Rectangle collisionArea;
 
-	public SmallEnemy(int x, int y) {
+	public SmallEnemy(int x, int y, int movementPattern) {
 		position = new Vector2(x, y);
 		collisionArea = new Rectangle();
+		this.movementPattern = movementPattern;
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class SmallEnemy implements Enemy {
 	 * * More to be added *
 	 */
 	@Override
-	public void update(float delta, int movementPattern) {
+	public void update(float delta) {
 		if (movementPattern == 1) {
 			moveHorizontal(delta);
 		}
@@ -45,7 +46,7 @@ public class SmallEnemy implements Enemy {
 		if (direction == "right")
 			position.add(new Vector2(100, 0).scl(delta)); // Has to be changed
 															// to velocity
-		else if (direction == "left")
+		else
 			position.add(new Vector2(-100, 0).scl(delta));
 
 		if (position.x > 640 + 50)

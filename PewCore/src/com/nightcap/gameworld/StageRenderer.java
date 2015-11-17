@@ -7,6 +7,7 @@ import com.nightcap.gameobjects.Enemy;
 import com.nightcap.pewhelpers.Assets;
 
 public class StageRenderer {
+	private static int overlaySpeed = 100;
 
 	private ArrayList<Enemy> enemies;
 
@@ -22,7 +23,23 @@ public class StageRenderer {
 	}
 
 	void drawBackground(SpriteBatch batcher) {
-		batcher.draw(Assets.background0, 0, 0, 640, 960);
+		batcher.draw(Assets.background2, 0, 0,
+				Assets.overlay0.getRegionWidth(),
+				Assets.overlay0.getRegionHeight());
+	}
+
+	void drawOverlay(SpriteBatch batcher, float runTime) {
+		int y = (int) ((runTime * overlaySpeed) % Assets.overlay0
+				.getRegionHeight()) - 960;
+		
+		batcher.draw(Assets.overlay0, 0, y, Assets.overlay0.getRegionWidth(),
+				Assets.overlay0.getRegionHeight());
+		
+		if (y >= 0) {
+			batcher.draw(Assets.overlay0, 0,
+					y - Assets.overlay0.getRegionHeight(),
+					Assets.overlay0.getRegionWidth(),
+					Assets.overlay0.getRegionHeight());
+		}
 	}
 }
-
