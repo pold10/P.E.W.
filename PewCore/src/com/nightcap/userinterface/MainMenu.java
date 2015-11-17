@@ -68,7 +68,7 @@ public class MainMenu implements Screen {
 		skin.add("white", new Texture(pixmap));
 
 		// Store the font under the name "default".
-		// Note: Has to be moved to AssetLoader (FosLoader).
+		// Note: Has to be moved to AssetLoader (FosLoader) - Maybe.
 		bfont = new BitmapFont();
 		skin.add("default", bfont);
 
@@ -102,25 +102,6 @@ public class MainMenu implements Screen {
 
 		stage.addActor(table);
 
-		// Note: Unneeded part using Table
-		// playButton.setPosition(200, 600);
-		// settingsButton.setPosition(200, 400);
-		// exitButton.setPosition(200, 200);
-		// stage.addActor(playButton);
-		// stage.addActor(settingsButton);
-		// stage.addActor(exitButton);
-
-		// For some reason the guide uses this command three times.
-		// stage.addActor(textButton);
-		// stage.addActor(textButton);
-
-		// Add a listener to the button. ChangeListener is fired when the
-		// button's checked state changes, eg when clicked, Button#setChecked()
-		// is called, via a key press, etc. If the event.cancel() is called, the
-		// checked state will be reverted.
-
-		// ClickListener could have been used, but would only fire when clicked.
-		// Also, canceling a ClickListener event won't revert the checked state.
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				game.setScreen(new GameScreen());
@@ -137,8 +118,9 @@ public class MainMenu implements Screen {
 		
 		exitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
+				game.dispose();
+				game.getScreen().dispose();
 				Gdx.app.exit();
-
 			}
 		});
 	}
@@ -154,8 +136,6 @@ public class MainMenu implements Screen {
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		stage.act(Math.min(delta, 1 / 30f));
 		stage.draw();
-		// Note: This method is deprecated.
-		// Tablet.drawDebug(stage)
 		stage.setDebugAll(true);
 	}
 
