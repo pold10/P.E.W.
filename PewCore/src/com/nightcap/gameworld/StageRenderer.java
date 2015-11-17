@@ -7,13 +7,10 @@ import com.nightcap.gameobjects.Enemy;
 import com.nightcap.pewhelpers.Assets;
 
 public class StageRenderer {
-	private GameWorld world;
 
 	private ArrayList<Enemy> enemies;
 
 	public StageRenderer(GameWorld world) {
-		this.world = world;
-		
 		enemies = world.getStage().getEnemies();
 	}
 
