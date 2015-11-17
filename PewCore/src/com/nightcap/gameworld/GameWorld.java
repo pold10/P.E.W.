@@ -45,5 +45,4 @@ public class GameWorld {
 	public StageLoader getStage() {
 		return stage;
 	}
-
 }

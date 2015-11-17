@@ -7,6 +7,7 @@ public class SmallEnemy implements Enemy {
 	private Vector2 position;
 	private int width = 24, height = 24;
 	private boolean alive = true;
+	private String direction = "right";
 
 	// Shapes for collisions
 	private Rectangle collisionArea;
@@ -27,9 +28,32 @@ public class SmallEnemy implements Enemy {
 		alive = false;
 	}
 
+	/*
+	 * Movement Patterns: 0.- Stay 1.- Horizontal
+	 * 
+	 * * More to be added *
+	 */
 	@Override
-	public void update(float delta) {
+	public void update(float delta, int movementPattern) {
+		if (movementPattern == 1) {
+			moveHorizontal(delta);
+		}
 		collisionArea.set(position.x, position.y, width, height);
+	}
+
+	private void moveHorizontal(float delta) {
+		if (direction == "right")
+			position.add(new Vector2(100, 0).scl(delta)); // Has to be changed
+															// to velocity
+		else if (direction == "left")
+			position.add(new Vector2(-100, 0).scl(delta));
+
+		if (position.x > 640 + 50)
+			direction = "left";
+
+		else if (position.x < -50)
+			direction = "right";
+
 	}
 
 	// Getters
