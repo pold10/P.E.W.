@@ -15,17 +15,21 @@ import com.nightcap.pewhelpers.Assets;
 
 public class GameRenderer {
 	private GameWorld myWorld;
+	private StageRenderer stageRenderer;
 	private OrthographicCamera cam;
 	private SpriteBatch batcher;
 	private ShapeRenderer shapeRenderer;
-	TextureRegion currentFrame;
+	private TextureRegion currentFrame;
 
 	// Game Objects
-	Player player;
-	ArrayList<Enemy> enemies;
+	// Note: I think we should not recreate these objects in the renderer class,
+	// and only use the getters. Not sure what is appropriate.
+	private Player player;
+	private ArrayList<Enemy> enemies;
 
 	public GameRenderer(GameWorld world, int width, int height) {
 		myWorld = world;
+		stageRenderer = new StageRenderer(world);
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(true, 640, 960);
@@ -57,8 +61,8 @@ public class GameRenderer {
 
 		// Transparency off
 		batcher.disableBlending();
-		batcher.draw(Assets.background0, 0, 0, 640, 960);
 
+		stageRenderer.drawBackground(batcher);
 		// Transparency on
 		batcher.enableBlending();
 
@@ -67,14 +71,14 @@ public class GameRenderer {
 
 		drawBullets();
 
-		drawEnemies();
+		stageRenderer.drawEnemies(batcher);
 
 		batcher.end();
 	}
 
 	public void initGameObjects() {
 		player = myWorld.getPlayer();
-		enemies = myWorld.getEnemies();
+		enemies = myWorld.getStage().getEnemies();
 	}
 
 	public void drawBullets() {
@@ -84,10 +88,4 @@ public class GameRenderer {
 		}
 	}
 
-	public void drawEnemies() {
-		for (int i = 0; i < enemies.size(); i++) {
-			batcher.draw(Assets.smallRat0, enemies.get(i).getX(), enemies
-					.get(i).getY(), 24, 24);
-		}
-	}
 }
