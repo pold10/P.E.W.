@@ -3,12 +3,15 @@ package com.nightcap.pewhelpers;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.nightcap.gameobjects.Player;
+import com.nightcap.pewpew.PEWGame;
+import com.nightcap.userinterface.MainMenu;
 
 public class InputHandler implements InputProcessor {
-
+	PEWGame game;
 	private Player player;
 
-	public InputHandler(Player player) {
+	public InputHandler(Player player, PEWGame game) {
+		this.game = game;
 		this.player = player;
 	}
 
@@ -29,6 +32,10 @@ public class InputHandler implements InputProcessor {
 			break;
 		case Keys.SPACE:
 			player.shoot();
+			break;
+		case Keys.ESCAPE:
+			game.setScreen(new MainMenu(game));
+			break;
 		}
 		return false;
 	}

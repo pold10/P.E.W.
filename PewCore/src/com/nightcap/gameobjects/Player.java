@@ -2,6 +2,7 @@ package com.nightcap.gameobjects;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.nightcap.pewhelpers.AudioHandler;
 
@@ -9,6 +10,7 @@ public class Player {
 	private Vector2 position;
 	private Vector2 velocity;
 	// private Vector2 acceleration;
+	private Rectangle collisionArea;
 
 	private int width;
 	private int height;
@@ -27,6 +29,8 @@ public class Player {
 		position = new Vector2(x, y);
 		velocity = new Vector2(0, 0);
 		// acceleration = new Vector2(0, 0);
+		collisionArea = new Rectangle(position.x, position.y, this.width,
+				this.height);
 	}
 
 	public void update(float delta) {
@@ -72,7 +76,8 @@ public class Player {
 			else
 				projectiles.remove(i);
 		}
-
+		// Update collisionArea
+		collisionArea.set(position.x, position.y, width, height);
 	}
 
 	public void shoot() {
@@ -136,6 +141,10 @@ public class Player {
 
 	public float getHeight() {
 		return height;
+	}
+
+	public Rectangle getCollisionArea() {
+		return collisionArea;
 	}
 
 }
