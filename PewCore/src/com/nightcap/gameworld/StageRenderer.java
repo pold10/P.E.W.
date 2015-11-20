@@ -2,12 +2,13 @@ package com.nightcap.gameworld;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nightcap.gameobjects.Enemy;
 import com.nightcap.pewhelpers.Assets;
 
 public class StageRenderer {
-	private static int overlaySpeed = 500;
+	private static final int overlaySpeed = 500;
 
 	private ArrayList<Enemy> enemies;
 
@@ -30,7 +31,7 @@ public class StageRenderer {
 
 	void drawOverlay(SpriteBatch batcher, float runTime) {
 		int y = (int) ((runTime * overlaySpeed) % Assets.overlay0
-				.getRegionHeight()) - 960;
+				.getRegionHeight()) - Gdx.graphics.getHeight();
 		
 		batcher.draw(Assets.overlay0, 0, y, Assets.overlay0.getRegionWidth(),
 				Assets.overlay0.getRegionHeight());

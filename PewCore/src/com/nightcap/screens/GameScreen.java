@@ -5,20 +5,21 @@ import com.badlogic.gdx.Screen;
 import com.nightcap.gameworld.GameRenderer;
 import com.nightcap.gameworld.GameWorld;
 import com.nightcap.pewhelpers.InputHandler;
+import com.nightcap.pewpew.PEWGame;
 
 public class GameScreen implements Screen {
 	private GameWorld world;
 	private GameRenderer renderer;
 	private float runTime = 0;
 
-	public GameScreen() {
+	public GameScreen(PEWGame game) {
 		int screenWidth = (int) Gdx.graphics.getWidth();
 		int screenHeight = (int) Gdx.graphics.getHeight();
 
 		world = new GameWorld(screenWidth, screenHeight);
 		renderer = new GameRenderer(world, screenWidth, screenHeight);
 
-		Gdx.input.setInputProcessor(new InputHandler(world.getPlayer()));
+		Gdx.input.setInputProcessor(new InputHandler(world.getPlayer(),game));
 	}
 
 	@Override

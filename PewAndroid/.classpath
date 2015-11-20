@@ -9,5 +9,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.5.6/93418008f79684e0fbe15d487c82c21b63389f18/gdx-1.5.6.jar" sourcepath="C:/Users/Pablo Miranda/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.5.6/478a70a74278275ea7a73ae1bf4519c5162ff388/gdx-1.5.6-sources.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="/PewCore/libs/gdx-freetype.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

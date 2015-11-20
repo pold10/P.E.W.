@@ -1,5 +1,6 @@
 package com.nightcap.gameworld;
 
+import com.badlogic.gdx.Gdx;
 import com.nightcap.gameobjects.Player;
 import com.nightcap.pewhelpers.AudioHandler;
 
@@ -9,7 +10,7 @@ public class GameWorld {
 
 	public GameWorld(int xSize, int ySize) {
 		stage = new StageLoader();
-		
+
 		player = new Player((int) (xSize - 32) / 2, ySize - 37, 32, 32);
 
 	}
@@ -18,12 +19,13 @@ public class GameWorld {
 		player.update(delta);
 
 		stage.update(delta);
-		
-		// Enemies x Projectiles collisions
+
+		// Enemies x (Projectiles + Player) collisions
 		for (int i = 0; i < stage.getEnemies().size(); i++) {
 			for (int j = 0; j < player.getProjectiles().size(); j++) {
 				// If both rectangles collide, it's a collision.
-				if (stage.getEnemies()
+				if (stage
+						.getEnemies()
 						.get(i)
 						.getCollisionArea()
 						.overlaps(
@@ -35,13 +37,17 @@ public class GameWorld {
 					stage.getEnemies().get(i).die();
 				}
 			}
+			if (stage.getEnemies().get(i).getCollisionArea()
+					.overlaps(player.getCollisionArea())) {
+				Gdx.app.log("GameWorld", "Player Collision!");
+			}
 		}
 	}
 
 	public Player getPlayer() {
 		return player;
 	}
-	
+
 	public StageLoader getStage() {
 		return stage;
 	}

@@ -9,7 +9,7 @@ public class SmallEnemy implements Enemy {
 	private boolean alive = true;
 	private String direction;
 
-	// Shapes for collisions
+	// Shape for collisions
 	private Rectangle collisionArea;
 
 	public SmallEnemy(int x, int y, int movementPattern) {
@@ -26,7 +26,7 @@ public class SmallEnemy implements Enemy {
 
 	@Override
 	public void die() {
-		alive = false;
+		alive = false; // Pretty straightforward
 	}
 
 	/*
@@ -55,6 +55,11 @@ public class SmallEnemy implements Enemy {
 		else if (position.x < -50)
 			direction = "right";
 
+	}
+	
+	@SuppressWarnings("unused")
+	private void moveDiagonal(float delta){
+		//TODO
 	}
 
 	// Getters
@@ -86,7 +91,7 @@ public class SmallEnemy implements Enemy {
 		return position.y;
 	}
 
-	// Setters
+	// Setters //Should we allow direct setters?
 	@Override
 	public void setX(int x) {
 		position.x = x;

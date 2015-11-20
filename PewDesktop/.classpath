@@ -20,5 +20,7 @@
 	<classpathentry exported="true" kind="lib" path="libs/lwjgl-platform-2.9.2-natives-linux.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/lwjgl-platform-2.9.2-natives-osx.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/lwjgl-platform-2.9.2-natives-windows.jar"/>
+	<classpathentry kind="lib" path="/PewCore/libs/gdx-freetype.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-freetype-natives.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
