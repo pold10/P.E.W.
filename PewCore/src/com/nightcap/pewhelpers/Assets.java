@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
 
-	public static TextureRegion background0, background1, background2,
-			overlay0, smallLeadNormal, smallRat0;
+	public static TextureRegion menuBackground0, menuBackground1,
+			mainMenuButton0, background0, background1, background2, overlay0,
+			smallLeadNormal, smallRat0;
 
 	public static Animation player, smallImpactLead;
 
@@ -16,6 +17,14 @@ public class Assets {
 		FosLoader.getHandles(FosLoader.getRoot(), FosLoader.fileArray);
 		FosLoader.load(FosLoader.fileArray);
 
+		// *** Main Menu ***
+		menuBackground0 = FosLoader.getTexReg("menu_background_0");
+		menuBackground0.flip(false, true);
+		menuBackground1 = FosLoader.getTexReg("menu_background_1");
+		menuBackground1.flip(false, true);
+		mainMenuButton0 = FosLoader.getTexReg("main_menu_button_0");
+
+		// *** Game Screen ***
 		// Background
 		background0 = FosLoader.getTexReg("background_0");
 		background1 = FosLoader.getTexReg("background_1");

@@ -27,13 +27,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.nightcap.pewhelpers.Assets;
 import com.nightcap.pewpew.PEWGame;
 import com.nightcap.screens.GameScreen;
 
 public class MainMenu implements Screen {
 	private Skin skin;
 	private Stage stage;
-	private BitmapFont bfont;
 	private Pixmap pixmap;
 	private Table table;
 
@@ -64,19 +64,17 @@ public class MainMenu implements Screen {
 
 		// Generate a 1x1 white texture and store it in the skin named "white".
 		// Note: Button size
-		pixmap = new Pixmap(125, 75, Format.RGBA8888);
-		pixmap.setColor(Color.WHITE);
-		pixmap.fill();
-		skin.add("white", new Texture(pixmap));
-		
-		bfont = new BitmapFont();
-		
-		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/fonts/Prototype.ttf"));
+
+		skin.add("white", Assets.mainMenuButton0);
+
+		// Font
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(
+				Gdx.files.internal("data/fonts/Prototype.ttf"));
 		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
 		parameter.size = 22;
-		BitmapFont font22 = generator.generateFont(parameter); // font size 12 pixels
-		generator.dispose(); // don't forget to dispose to avoid memory leaks!
-		
+		BitmapFont font22 = generator.generateFont(parameter); 
+		generator.dispose();
+
 		skin.add("default", font22);
 
 		// Configure a TextButtonStyle and name it "default". Skin resources are
@@ -100,7 +98,7 @@ public class MainMenu implements Screen {
 		final TextButton exitButton = new TextButton("Exit", textButtonStyle);
 
 		table = new Table();
-		table.setFillParent(true);
+		table.setBounds(0, 0, 640, 960-350); // Values have to be changed to variables
 		table.add(playButton).pad(50);
 		table.row();
 		table.add(settingsButton).pad(50);
@@ -122,7 +120,7 @@ public class MainMenu implements Screen {
 
 			}
 		});
-		
+
 		exitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				game.dispose();
@@ -141,6 +139,11 @@ public class MainMenu implements Screen {
 		Gdx.gl.glClearColor(backgroundColor[0], backgroundColor[1],
 				backgroundColor[2], 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+		stage.getBatch().begin();
+		stage.getBatch().draw(Assets.menuBackground1, 0, 0,
+				Assets.menuBackground1.getRegionWidth(),
+				Assets.menuBackground1.getRegionHeight());
+		stage.getBatch().end();
 		stage.act(Math.min(delta, 1 / 30f));
 		stage.draw();
 		stage.setDebugAll(true);
